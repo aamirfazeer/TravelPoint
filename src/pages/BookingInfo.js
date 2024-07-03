@@ -1,11 +1,11 @@
 import React from 'react';
-import person from '../assets/person.png'
+import person from "../assets/images/person.png";
 import { NavLink } from "react-router-dom";
 
 const BookingInfo = () => {
   return (
-    <div className="row g-0 me-5">
-      <div className="container m-2">
+    <div className="row g-0 mt-5 ms-5" style={{ marginRight: "15%" }}>
+      <div className="container">
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <NavLink

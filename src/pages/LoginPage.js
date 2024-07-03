@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./LoginPage.css";
-import scenicImage from "../assets/scenic.jpg";
+import scenicImage from "../assets/images/scenic.jpg";
 import { FaRegUser } from "react-icons/fa6";
 import { FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -16,12 +16,7 @@ function LoginPage() {
   return (
     <div className="page-container">
       <div
-        className="top-bar"
-        style={{ height: "46px", backgroundColor: "#1679AB" }}
-      ></div>
-      <div
-        className="container-fluid  d-flex align-items-center justify-content-center"
-        style={{ marginTop: "4.5%", marginBottom: "4.5%" }}
+        className="container-fluid min-vh-100 d-flex align-items-center justify-content-center"
       >
         <div
           className="card login-container"
@@ -109,10 +104,6 @@ function LoginPage() {
           </div>
         </div>
       </div>
-      <div
-        className="bottom-bar"
-        style={{ height: "46px", backgroundColor: "#1679AB" }}
-      ></div>
     </div>
   );
 }

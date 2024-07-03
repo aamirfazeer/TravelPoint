@@ -1,11 +1,11 @@
 import React from "react";
-import image1 from "../assets/traveller.jpg";
-import image2 from "../assets/vehicle.jpg";
-import image3 from "../assets/equipment.jpg";
-import image4 from "../assets/guide.jpg";
-import image5 from "../assets/hotel.jpg";
-import image6 from "../assets/restaurant.jpg";
-import image7 from "../assets/authority.jpg";
+import image1 from "../assets/images/traveller.jpg";
+import image2 from "../assets/images/vehicle.jpg";
+import image3 from "../assets/images/equipment.jpg";
+import image4 from "../assets/images/guide.jpg";
+import image5 from "../assets/images/hotel.jpg";
+import image6 from "../assets/images/restaurant.jpg";
+import image7 from "../assets/images/authority.jpg";
 import "./AdminHomePage.css";
 
 function AdminHomePage() {
@@ -32,14 +32,14 @@ function AdminHomePage() {
                 <div className="col-md-3" key={index}>
                   <div
                     className="image-container justify-content-center mt-2"
-                    style={{ width: "180px", height: "180px", marginLeft: "12%" }}
+                    style={{ width: "200px", height: "200px", marginLeft: "8%" }}
                   >
                     <img
                       src={image.src}
                       alt={image.title}
                       className="img-fluid rounded"
                     />
-                    <div className="overlay">
+                    <div className="overlay" style={{overlay}}>
                       <div className="text">{image.title} (12)</div>
                     </div>
                   </div>
@@ -57,3 +57,17 @@ function AdminHomePage() {
 }
 
 export default AdminHomePage;
+
+const overlay = {
+  position: "absolute",
+  top: "0",
+  bottom: "0",
+  left: "0",
+  right: "0",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  overflow: "hidden",
+  width: "100%",
+  height: "100%",
+  transition: ".5s ease",
+  BorderRadius: "0.25rem"
+};

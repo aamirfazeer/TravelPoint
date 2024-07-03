@@ -42,4 +42,22 @@
   text-align: center;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; 
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+}
+
+@media (min-width: 768px) {
+  .login-container {
+    max-width: 500px; /* Adjust this value for larger screens */
+  }
+}
 

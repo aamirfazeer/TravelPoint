@@ -1,23 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import placeholder from '../assets/placeholder.jpg'
+import placeholder from "../assets/images/placeholder.jpg";
+import { IoMailOutline } from "react-icons/io5";
+import { IoNotificationsOutline } from "react-icons/io5";
 
 function NavBar() {
   return (
-    <div class="row g-0 mt-2" style={{ marginLeft: "35px" }}>
-      <div class="col-md-1 m-3">
-        <Link to="/home">
-          <img
-            src={placeholder}
-            className="img-rounded"
-            style={{ width: "75px", height: "75px" }}
-          />
-        </Link>
-      </div>
-      <div class="col-md-9 m-3">
-        <div className="d-flex flex-column justify-content-center">
-          <h2 style={{ fontWeight: "bold" }}>Administrator Name</h2>
-          <h6>System Admin</h6>
+    <div class="row g-0">
+      <div
+        class="col-md d-flex justify-content-right mt-4 mb-3 me-4"
+        style={{ justifyContent: "right" }}
+      >
+        <IoMailOutline
+          className="mt-2 me-4 "
+          style={{ height: "35px", width: "35px" }}
+        />
+        <IoNotificationsOutline
+          className="mt-2 me-4"
+          style={{ height: "35px", width: "35px" }}
+        />
+        <div className='d-flex'>
+          <Link to="/home">
+            <img
+              src={placeholder}
+              className="img-rounded me-2"
+              style={{ width: "50px", height: "50px" }}
+            />
+          </Link>
+          <div className="d-flex flex-column g-0 m-0 p-0">
+            <h2 className="fs-5" style={{ fontWeight: "bold" }}>
+              Usama Puward
+            </h2>
+            <h6 className="fs-9">System Admin</h6>
+          </div>
         </div>
       </div>
     </div>

@@ -1,109 +1,151 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import placeholder from "../assets/placeholder.jpg";
+import "./SideBar.css";
+import { NavLink, Link } from "react-router-dom";
+import logo from "../assets/images/logo.png";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { GiSchoolBag } from "react-icons/gi";
+import { FaCar } from "react-icons/fa";
+import { GiCampingTent } from "react-icons/gi";
+import { GiSecretBook } from "react-icons/gi";
+import { FaHotel } from "react-icons/fa";
+import { IoShieldCheckmark } from "react-icons/io5";
+import { IoRestaurantSharp } from "react-icons/io5";
+import { RiLogoutBoxFill } from "react-icons/ri";
 
 function SideBar() {
   return (
     <div
-      className="col-md-2 text-white no-gutters"
+      className="col-md-2 d-flex flex-column text-white"
       style={{ backgroundColor: "#074173" }}
     >
-      <div className="text-center" style={{ height: "160px" }}>
+      <div className="text-center mt-4">
         <img
-          src={placeholder}
-          className="img-rounded text-center"
+          src={logo}
+          className="img-fluid"
           style={{
-            width: "100px",
             height: "100px",
-            marginTop: "40px",
-            borderRadius: "50px",
           }}
+          alt="Logo"
         />
       </div>
-      <hr
-        className="ms-3 me-3 text-white font-weight-bold"
-        style={{ fontWeight: "bold" }}
-      ></hr>
-      <div style={{ marginTop: "12%" }}>
+
+      <div className="mt-4">
         <ul className="nav flex-column m-3">
           <li className="nav-item mb-3">
-            <Link
+            <NavLink
+              to="/home"
+              className="nav-link text-white fw-bold d-flex align-items-center"
+              activeClassName="active"
+            >
+              <MdOutlineSpaceDashboard
+                className="me-2"
+                style={{ height: "25px", width: "25px" }}
+              />
+              Dashboard
+            </NavLink>
+          </li>
+          <li className="nav-item mb-3">
+            <NavLink
               to="/travellers"
-              className="nav-link text-white"
+              className="nav-link text-white fw-bold d-flex align-items-center"
               activeClassName="active"
-              style={{ fontWeight: "bold" }}
             >
+              <GiSchoolBag
+                className="me-2"
+                style={{ height: "26px", width: "26px" }}
+              />
               Travellers
-            </Link>
+            </NavLink>
           </li>
-          <li className="nav-item mb-3">
-            <Link
+          <li className="nav-item mb-3 ">
+            <NavLink
               to="/vehicle-rentals"
-              className="nav-link text-white"
+              className="nav-link text-white fw-bold d-flex align-items-center"
               activeClassName="active"
-              style={{ fontWeight: "bold" }}
             >
+              <FaCar
+                className="me-2"
+                style={{ height: "25px", width: "25px" }}
+              />
               Vehicle Rentals
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item mb-3">
-            <Link
+            <NavLink
               to="/equipment-rentals"
-              className="nav-link text-white"
+              className="nav-link text-white fw-bold d-flex align-items-center"
               activeClassName="active"
-              style={{ fontWeight: "bold" }}
             >
+              <GiCampingTent
+                className="me-2"
+                style={{ height: "26px", width: "26px" }}
+              />
               Equipment Rentals
-            </Link>
+            </NavLink>
           </li>
-          <li className="nav-item mb-3">
-            <Link
+          <li className="nav-item mb-3 ">
+            <NavLink
               to="/travel-guides"
-              className="nav-link text-white"
+              className="nav-link text-white fw-bold d-flex align-items-center"
               activeClassName="active"
-              style={{ fontWeight: "bold" }}
             >
+              <GiSecretBook
+                className="me-2"
+                style={{ height: "26px", width: "26px" }}
+              />
               Travel Guides
-            </Link>
+            </NavLink>
           </li>
-          <li className="nav-item mb-3">
-            <Link
+          <li className="nav-item mb-3 ">
+            <NavLink
               to="/hotels"
-              className="nav-link text-white"
+              className="nav-link text-white fw-bold d-flex align-items-center"
               activeClassName="active"
-              style={{ fontWeight: "bold" }}
             >
+              <FaHotel
+                className="me-2"
+                style={{ height: "25px", width: "25px" }}
+              />
               Hotels
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item mb-3">
-            <Link
+            <NavLink
               to="/restaurants"
-              className="nav-link text-white"
+              className="nav-link text-white fw-bold d-flex align-items-center"
               activeClassName="active"
-              style={{ fontWeight: "bold" }}
             >
+              <IoRestaurantSharp
+                className="me-2"
+                style={{ height: "26px", width: "26px" }}
+              />
               Restaurants
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item mb-3">
-            <Link
+            <NavLink
               to="/authorities"
-              className="nav-link text-white"
+              className="nav-link text-white fw-bold d-flex align-items-center"
               activeClassName="active"
-              style={{ fontWeight: "bold" }}
             >
+              <IoShieldCheckmark
+                className="me-2"
+                style={{ height: "26px", width: "26px" }}
+              />
               Authorities
-            </Link>
+            </NavLink>
           </li>
-          <li className="mt-5">
+          <li className="nav-item mt-5">
             <Link
               to="/"
-              className="nav-link text-white"
+              className="nav-link text-white fw-bold d-flex align-items-center"
               activeClassName="active"
-              style={{ fontWeight: "bold" }}
             >
-              {">>"}  Logout
+              <RiLogoutBoxFill
+                className="me-2"
+                style={{ height: "26px", width: "26px" }}
+              />
+              Logout
             </Link>
           </li>
         </ul>

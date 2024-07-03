@@ -7,6 +7,8 @@ function RestaurantsPage() {
     { name: "Ms. Tharindu", id: "1254852" },
     { name: "Ms. Senanayake", id: "1254852" },
     { name: "Ms. David", id: "1254852" },
+    { name: "Ms. Mushahid", id: "1254852" },
+    { name: "Ms. Aamir", id: "1254852" },
   ];
   return (
     <div className="row g-0 mt-5 ms-5" style={{ marginRight: "15%" }}>
