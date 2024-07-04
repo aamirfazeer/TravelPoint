@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const BookingInfo = () => {
   return (
-    <div className="row g-0 mt-5 ms-5" style={{ marginRight: "15%" }}>
+    <div className="row g-0 mt-4 ms-4" style={{ marginRight: "15%" }}>
       <div className="container">
         <ul className="nav nav-tabs">
           <li className="nav-item">
@@ -35,18 +35,18 @@ const BookingInfo = () => {
             </NavLink>
           </li>
         </ul>
-        <div className="card" style={{ backgroundColor: "#EFF2FB" }}>
-          <div className="card-body">
+        <div className="card shadow-lg" style={{ backgroundColor: "#EFF2FB" }}>
+          <div className="card-body m-2">
             <div className="d-flex align-items-center mb-3">
               <div class="me-3">
                 <img
                   src={person}
-                  className="img-rounded"
+                  className="img-rounded-circle"
                   style={{ width: "50px", height: "50px" }}
                 />
               </div>
               <div>
-                <h5 className="card-title mb-0">Ms. Perera</h5>
+                <h5 className="card-title mb-0 fw-bold fs-4">Ms. Perera</h5>
                 <a href="#" className="text-decoration-none">
                   Traveller ID #1254852
                 </a>

@@ -20,31 +20,31 @@ function AdminHomePage() {
   ];
 
   return (
-    <div className="row g-0 mt-4 ms-4" style={{ marginRight: "18%" }}>
-      <div className="container">
-        <div className="card">
+    <div className="row g-0 ms-4 mt-4">
+      <div className="container justify-content-center">
+        <div className="card shadow-lg">
           <div
-            className="card-body d-flex"
-            style={{ backgroundColor: "#EFF2FB", padding: "2% 2% 1% 2%" }}
+            className="card-body"
+            style={{ backgroundColor: "#dde6ed", padding: "2% 2% 2% 2%" }}
           >
-            <div className="row justify-content-center g-0">
+            <div
+              className="row align-items-center justify-content-center g-0"
+              style={{ marginLeft: "0" }}
+            >
               {images1.map((image, index) => (
                 <div className="col-md-3" key={index}>
-                  <div
-                    className="image-container justify-content-center mt-2"
-                    style={{ width: "200px", height: "200px", marginLeft: "8%" }}
-                  >
+                  <div className="image-container d-block ms-4 mt-2">
                     <img
                       src={image.src}
                       alt={image.title}
                       className="img-fluid rounded"
                     />
-                    <div className="overlay" style={{overlay}}>
+                    <div className="overlay">
                       <div className="text">{image.title} (12)</div>
                     </div>
-                  </div>
-                  <div className="mt-2 text-center">
-                    <h6 style={{ fontWeight: "bold" }}>{image.title}</h6>
+                    <div className="mt-2 text-center me-5">
+                      <h6 style={{ fontWeight: "bold" }}>{image.title}</h6>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -57,17 +57,3 @@ function AdminHomePage() {
 }
 
 export default AdminHomePage;
-
-const overlay = {
-  position: "absolute",
-  top: "0",
-  bottom: "0",
-  left: "0",
-  right: "0",
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
-  overflow: "hidden",
-  width: "100%",
-  height: "100%",
-  transition: ".5s ease",
-  BorderRadius: "0.25rem"
-};

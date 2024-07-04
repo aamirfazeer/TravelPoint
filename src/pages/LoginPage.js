@@ -20,14 +20,13 @@ function LoginPage() {
       >
         <div
           className="card login-container"
-          style={{ backgroundColor: "#EFF2FB" }}
         >
           <div className="row g-0">
             <div className="col-md-5 d-none d-md-block">
               <img
                 src={scenicImage}
                 alt="Scenic view"
-                className="img-fluid h-100 border-radius-0"
+                className="img-fluid img h-100"
                 style={{ objectFit: "cover" }}
               />
             </div>
@@ -93,6 +92,7 @@ function LoginPage() {
                       <button
                         type="submit"
                         className="btn btn-primary w-50 mt-3"
+                        style={{ marginLeft:"25%"}}
                       >
                         Log In
                       </button>

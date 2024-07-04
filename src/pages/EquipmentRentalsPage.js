@@ -11,14 +11,13 @@ function EquipmentRentalsPage() {
     { name: "Ms. Aamir", id: "1254852" },
   ];
   return (
-    <div className="row g-0 mt-5 ms-5" style={{ marginRight: "15%" }}>
+    <div className="row g-0 mt-4 ms-4" style={{ marginRight: "15%" }}>
       <div className="container">
         <div className="card">
           <div className="card-body p-4" style={{ backgroundColor: "#EFF2FB" }}>
             <div className="mb-3">
               <h5
-                className="card-title fs-4 mb-3"
-                style={{ fontWeight: "bold" }}
+                className="card-title fs-4 fw-bold mb-3"
               >
                 Search Rental Equipment Provider
               </h5>
@@ -39,7 +38,7 @@ function EquipmentRentalsPage() {
             <hr />
             <div className="mt-4">
               <h6 className="mb-4">All equipment Providers (12)</h6>
-              <table className="table">
+              <table className="table table-hover">
                 <tbody>
                   {travelers.map((traveler, index) => (
                     <tr key={index} style={{ borderRadius: "5%" }}>

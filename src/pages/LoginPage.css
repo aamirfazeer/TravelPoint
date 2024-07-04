@@ -4,9 +4,15 @@ body {
 }
 
 .card.login-container {
+  background-color: #EFF2FB;
   max-width: 800px;
   width: 100%;
   border: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.img {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }

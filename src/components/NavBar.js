@@ -1,14 +1,48 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import placeholder from "../assets/images/placeholder.jpg";
 import { IoMailOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
 
 function NavBar() {
+  const location = useLocation();
+
+  const getTitle = (path) => {
+    switch (path) {
+      case "/home":
+        return "Dashboard";
+      case "/travellers":
+        return "Travellers";
+      case "/vehicle-rentals":
+        return "Vehicle Rentals";
+      case "/equipment-rentals":
+        return "Equipment Rentals";
+      case "/travel-guides":
+        return "Travel Guides";
+      case "/hotels":
+        return "Hotels";
+      case "/restaurants":
+        return "Restaurants";
+      case "/authorities":
+        return "Authorities";
+      default:
+        return "Profile";
+    }
+  };
+
   return (
     <div class="row g-0">
       <div
-        class="col-md d-flex justify-content-right mt-4 mb-3 me-4"
+        class="col-md"
+        style={{ justifyContent: "left", marginTop: "2.4%", marginLeft: "3.2%" }}
+      >
+        <h1 class="fs-2" style={{ fontWeight: "bold", color:"grey" }}>
+          {getTitle(location.pathname)}
+        </h1>
+      </div>
+      <div
+        class="col-md d-flex justify-content-right mt-3 mb-3 me-3"
         style={{ justifyContent: "right" }}
       >
         <IoMailOutline
@@ -19,7 +53,7 @@ function NavBar() {
           className="mt-2 me-4"
           style={{ height: "35px", width: "35px" }}
         />
-        <div className='d-flex'>
+        <div className="d-flex">
           <Link to="/home">
             <img
               src={placeholder}
