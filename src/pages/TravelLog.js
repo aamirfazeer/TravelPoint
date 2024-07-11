@@ -1,62 +1,39 @@
 import React from "react";
-import person from "../assets/images/person.png";
-import { NavLink } from "react-router-dom";
+import TabLayout from "../components/TabLayout";
+import post1 from "../assets/images/post1.png"
+import post2 from "../assets/images/post2.png";
+import person from "../assets/images/person.png"
+import PostCard from "../components/PostCard";
 
 const TravelLog = () => {
+  const posts = [
+    {
+      username: "W.J.Perera",
+      location: "Colombo, Sri Lanka",
+      date: "12 November",
+      profileImage: person,
+      image: post1,
+      caption: "The best place to visit in Sri Lanka",
+      likes: 73,
+    },
+    {
+      username: "W.J.Perera",
+      location: "Kandy, Sri Lanka",
+      date: "20 January",
+      profileImage: person,
+      image: post2,
+      caption: "The best place to visit in Sri Lanka",
+      likes: 198,
+    },
+  ];
   return (
-    <div className="row g-0 mt-4 ms-4" style={{ marginRight: "15%" }}>
+    <TabLayout>
       <div className="container">
-        <ul className="nav nav-tabs">
-          <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/personal-info"
-            >
-              Personal Information
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/travel-log"
-            >
-              Travel Log
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/booking-info"
-            >
-              Booking Information
-            </NavLink>
-          </li>
-        </ul>
-        <div className="card shadow-lg" style={{ backgroundColor: "#EFF2FB" }}>
-          <div className="card-body m-2">
-            <div className="d-flex align-items-center mb-3">
-              <div class="me-3">
-                <img
-                  src={person}
-                  className="img-rounded"
-                  style={{ width: "50px", height: "50px" }}
-                />
-              </div>
-              <div>
-                <h5 className="card-title mb-0 fw-bold fs-4">Ms. Perera</h5>
-                <a href="#" className="text-decoration-none">
-                  Traveller ID #1254852
-                </a>
-              </div>
-            </div>
-            {/* Add content for Travel Log here */}
-          </div>
-        </div>
+        {posts.map((post, index) => (
+          <PostCard key={index} post={post} />
+        ))}
       </div>
-    </div>
+    </TabLayout>
   );
 };
 
