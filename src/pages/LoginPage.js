@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import "./LoginPage.css";
 import scenicImage from "../assets/images/scenic.jpg";
 import { FaRegUser } from "react-icons/fa6";
 import { FiLock } from "react-icons/fi";
@@ -15,11 +14,17 @@ function LoginPage() {
 
   return (
     <div className="page-container">
-      <div
-        className="container-fluid min-vh-100 d-flex align-items-center justify-content-center"
-      >
+      <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
         <div
           className="card login-container"
+          style={{
+            backgroundColor: "#EFF2FB",
+            maxWidth: "800px",
+            width: "100%",
+            border: "none",
+            borderRadius: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+          }}
         >
           <div className="row g-0">
             <div className="col-md-5 d-none d-md-block">
@@ -27,7 +32,11 @@ function LoginPage() {
                 src={scenicImage}
                 alt="Scenic view"
                 className="img-fluid img h-100"
-                style={{ objectFit: "cover" }}
+                style={{
+                  objectFit: "cover",
+                  borderTopLeftRadius: "20px",
+                  borderBottomLeftRadius: "20px",
+                }}
               />
             </div>
             <div className="col-md-6 container d-flex justify-content-center align-items-center">
@@ -92,7 +101,7 @@ function LoginPage() {
                       <button
                         type="submit"
                         className="btn btn-primary w-50 mt-3"
-                        style={{ marginLeft:"25%"}}
+                        style={{ marginLeft: "25%" }}
                       >
                         Log In
                       </button>
