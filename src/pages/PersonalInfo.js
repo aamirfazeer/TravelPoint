@@ -1,9 +1,25 @@
 import React from "react";
 import TabLayout from "../components/TabLayout";
+import person from "../assets/images/person.png";
 
 const PersonalInfo = () => {
   return (
     <TabLayout>
+      <div className="d-flex align-items-center mb-4">
+        <div className="me-3">
+          <img
+            src={person}
+            className="img-rounded-circle"
+            style={{ width: "50px", height: "50px" }}
+          />
+        </div>
+        <div>
+          <h5 className="card-title mb-0 fw-bold fs-4">Ms. Perera</h5>
+          <a href="#" className="text-decoration-none">
+            Traveller ID #1254852
+          </a>
+        </div>
+      </div>
       <form className="mt-4">
         <div className="row mb-3">
           <div className="col-md-6">

@@ -8,10 +8,12 @@ const Layout = () => {
   return (
     <div className="dashboard">
       <SideBar />
-      <div className="dashboard-content ">
-        <div className="col min-vh-100">
+      <div className="dashboard-content">
+        <div className="col min-vh-100 page">
           <NavBar />
-          <Outlet />
+          <div className="outlet">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>

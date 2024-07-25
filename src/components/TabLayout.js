@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import person from "../assets/images/person.png";
 import { NavLink } from "react-router-dom";
-import "./TabLayout.css"
+import "./TabLayout.css";
 
 const TabLayout = ({ children }) => {
   const [activeTab, setActiveTab] = useState();
@@ -46,21 +46,6 @@ const TabLayout = ({ children }) => {
         </ul>
         <div className="card shadow-lg" style={{ backgroundColor: "#dde6ed" }}>
           <div className="card-body m-2">
-            <div className="d-flex align-items-center mb-3">
-              <div className="me-3">
-                <img
-                  src={person}
-                  className="img-rounded-circle"
-                  style={{ width: "50px", height: "50px" }}
-                />
-              </div>
-              <div>
-                <h5 className="card-title mb-0 fw-bold fs-4">Ms. Perera</h5>
-                <a href="#" className="text-decoration-none">
-                  Traveller ID #1254852
-                </a>
-              </div>
-            </div>
             {children}
           </div>
         </div>

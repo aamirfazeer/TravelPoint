@@ -35,7 +35,7 @@ function NavBar() {
     <div class="row g-0">
       <div
         class="col-md"
-        style={{ justifyContent: "left", marginTop: "2.4%", marginLeft: "3.2%" }}
+        style={{ justifyContent: "left", marginTop: "2.4%", marginLeft: "3.2%", marginBottom:"24px" }}
       >
         <h1 class="fs-2" style={{ fontWeight: "bold", color:"grey" }}>
           {getTitle(location.pathname)}

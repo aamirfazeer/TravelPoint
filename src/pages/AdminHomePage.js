@@ -20,9 +20,12 @@ function AdminHomePage() {
   ];
 
   return (
-    <div className="row g-0 ms-2 justify-content-center" >
+    <div className="row g-0 ms-2 justify-content-center">
       {images1.map((image, index) => (
-        <div className="col-md-3 justify-content-center g-0 m-0 p-0" style={{height:"295px"}}>
+        <div
+          className="col-md-3 justify-content-center g-0 m-0 p-0"
+          style={{ height: "295px" }}
+        >
           <Card image={image} />
         </div>
       ))}
