@@ -1,11 +1,8 @@
-body {
+.dashboard {
   background: #046197;
   padding: 20px;
   font-family: Arial, sans-serif;
   overflow: hidden;
-}
-
-.dashboard {
   display: flex;
   height: 100vh;
   overflow: hidden;
@@ -22,6 +19,7 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   overflow: hidden;
+  height: 100vh;
 }
 
 .page {

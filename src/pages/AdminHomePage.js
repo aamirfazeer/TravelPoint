@@ -9,7 +9,7 @@ import authority from "../assets/images/authority.jpg";
 import ImageCard from "../components/ImageCard";
 
 function AdminHomePage() {
-  const images1 = [
+  const images = [
     { src: traveller, title: "Traveller", to: "/travellers" },
     { src: vehicle_rental, title: "Vehicle Rental", to: "/vehicle-rentals" },
     {
@@ -27,7 +27,7 @@ function AdminHomePage() {
     <div className="row g-0">
       <div className="container">
         <div className="row justify-content-center">
-          {images1.map((image, index) => (
+          {images.map((image, index) => (
             <div className="col-md-3" key={index}>
               <ImageCard image={image} />
             </div>
