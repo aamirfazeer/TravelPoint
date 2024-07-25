@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import "./LoginPage.css";
 import scenicImage from "../assets/images/scenic.jpg";
 import { FaRegUser } from "react-icons/fa6";
 import { FiLock } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import './LoginPage.css'
 
 const LoginPage = () => {
 

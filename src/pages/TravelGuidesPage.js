@@ -35,6 +35,7 @@ function TravelGuidesPage() {
     },
   ];
 
+
   return (
     <div className="row g-0 mt-4 ms-4" style={{ marginRight: "15%" }}>
       <div className="container">
