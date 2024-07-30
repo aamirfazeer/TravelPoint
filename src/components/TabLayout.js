@@ -9,7 +9,7 @@ const TabLayout = ({ children }) => {
   return (
     <div className="row g-0 mt-4 ms-4" style={{ marginRight: "15%" }}>
       <div className="container">
-        <ul className="nav nav-tabs m-0 p-0">
+        <ul className="nav nav-tabs mb-0 p-0">
           <li className="nav-item">
             <NavLink
               className={`nav-link tab ${
@@ -44,7 +44,7 @@ const TabLayout = ({ children }) => {
             </NavLink>
           </li>
         </ul>
-        <div className="card shadow-lg" style={{ backgroundColor: "#dde6ed" }}>
+        <div className="card shadow-lg mt-3" style={{ backgroundColor: "#dde6ed" }}>
           <div className="card-body m-2">
             {children}
           </div>

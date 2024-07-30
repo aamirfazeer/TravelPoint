@@ -4,12 +4,14 @@ import { MdPersonSearch } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-function User({ users, type }) {
+function User({ users, type, id_type }) {
   return (
     <div className="card shadow-lg">
       <div className="card-body p-4" style={{ backgroundColor: "#EFF2FB" }}>
         <div className="mb-3">
-          <h5 className="card-title fs-4 fw-bold mb-3">Search {type}</h5>
+          <h5 className="card-title fs-4 fw-bold mb-3">
+            Search {type} {id_type}
+          </h5>
           <div className="d-flex mb-4 align-items-center">
             <MdPersonSearch className="me-2" style={{ fontSize: "45px" }} />
             <input
@@ -42,7 +44,7 @@ function User({ users, type }) {
                   <Link to="/personal-info">
                     <button
                       className="btn btn-sm me-2"
-                      style={{ backgroundColor: "#046197", color:"white" }}
+                      style={{ backgroundColor: "#046197", color: "white" }}
                     >
                       View Profile
                     </button>
