@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import User from "../components/User";
 
 function TravelGuidesPage() {
-  const travel_guides = [
+  const initialTravelGuides = [
     {
       name: "Ms. Tharindu",
       id: "1254851",
@@ -35,35 +35,46 @@ function TravelGuidesPage() {
     },
   ];
 
+  const [travel_guides, setTravelGuides] = useState(initialTravelGuides);
   const [activeTab, setActiveTab] = useState("accepted");
 
   const filteredTravelGuides = travel_guides.filter(
     (travel_guide) => travel_guide.status === activeTab
   );
 
+  const updateStatus = (id, newStatus) => {
+    setTravelGuides((prevTravelGuides) =>
+      prevTravelGuides.map((travel_guide) =>
+        travel_guide.id === id
+          ? { ...travel_guide, status: newStatus }
+          : travel_guide
+      )
+    );
+  };
+
   return (
     <div className="row g-0 mt-4 ms-4" style={{ marginRight: "15%" }}>
       <div className="container">
         <div className="d-flex mb-4">
           <button
-            className={`btn btn-outline-primary me-2 ${
-              activeTab === "accepted" ? "active" : ""
+            className={`btn me-2 ${
+              activeTab === "accepted" ? "btn-primary" : "btn-outline-primary"
             }`}
             onClick={() => setActiveTab("accepted")}
           >
             Accepted
           </button>
           <button
-            className={`btn btn-outline-primary me-2 ${
-              activeTab === "rejected" ? "active" : ""
+            className={`btn me-2 ${
+              activeTab === "rejected" ? "btn-danger" : "btn-outline-danger"
             }`}
             onClick={() => setActiveTab("rejected")}
           >
             Rejected
           </button>
           <button
-            className={`btn btn-outline-primary ${
-              activeTab === "requested" ? "active" : ""
+            className={`btn ${
+              activeTab === "requested" ? "btn-warning" : "btn-outline-warning"
             }`}
             onClick={() => setActiveTab("requested")}
           >
@@ -72,6 +83,7 @@ function TravelGuidesPage() {
         </div>
         <User
           users={filteredTravelGuides}
+          updateStatus={updateStatus}
           type={activeTab}
           id_type="travel guides"
         />

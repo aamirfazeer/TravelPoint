@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import User from "../components/User";
 
 function VehicleRentalsPage() {
-  const vehicle_rentals = [
+  const initialVehicleRentals = [
     {
       name: "Ms. Tharindu",
       id: "1254851",
@@ -35,35 +35,46 @@ function VehicleRentalsPage() {
     },
   ];
 
+  const [vehicle_rentals, setVehicleRentals] = useState(initialVehicleRentals);
   const [activeTab, setActiveTab] = useState("accepted");
 
   const filteredVehicleRentals = vehicle_rentals.filter(
     (vehicle_rental) => vehicle_rental.status === activeTab
   );
 
+  const updateStatus = (id, newStatus) => {
+    setVehicleRentals((prevVehicleRentals) =>
+      prevVehicleRentals.map((vehicle_rental) =>
+        vehicle_rental.id === id
+          ? { ...vehicle_rental, status: newStatus }
+          : vehicle_rental
+      )
+    );
+  };
+
   return (
     <div className="row g-0 mt-4 ms-4" style={{ marginRight: "15%" }}>
       <div className="container">
         <div className="d-flex mb-4">
           <button
-            className={`btn btn-outline-primary me-2 ${
-              activeTab === "accepted" ? "active" : ""
+            className={`btn me-2 ${
+              activeTab === "accepted" ? "btn-primary" : "btn-outline-primary"
             }`}
             onClick={() => setActiveTab("accepted")}
           >
             Accepted
           </button>
           <button
-            className={`btn btn-outline-primary me-2 ${
-              activeTab === "rejected" ? "active" : ""
+            className={`btn me-2 ${
+              activeTab === "rejected" ? "btn-danger" : "btn-outline-danger"
             }`}
             onClick={() => setActiveTab("rejected")}
           >
             Rejected
           </button>
           <button
-            className={`btn btn-outline-primary ${
-              activeTab === "requested" ? "active" : ""
+            className={`btn ${
+              activeTab === "requested" ? "btn-warning" : "btn-outline-warning"
             }`}
             onClick={() => setActiveTab("requested")}
           >
@@ -72,8 +83,9 @@ function VehicleRentalsPage() {
         </div>
         <User
           users={filteredVehicleRentals}
-          type={activeTab}
           id_type="vehicle rentals"
+          type={activeTab}
+          updateStatus={updateStatus}
         />
       </div>
     </div>
