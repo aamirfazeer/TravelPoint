@@ -12,6 +12,7 @@ import BookingInfo from "./pages/BookingInfo";
 import PersonalInfo from "./pages/PersonalInfo";
 import Login from "./pages/LoginPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="personal-info" element={<PersonalInfo />} />
           <Route path="travel-log" element={<TravelLog />} />
           <Route path="booking-info" element={<BookingInfo />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="home" element={<AdminHome />} />
         </Route>
       </Routes>

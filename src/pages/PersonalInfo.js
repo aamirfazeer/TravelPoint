@@ -1,6 +1,6 @@
 import React from "react";
 import TabLayout from "../components/TabLayout";
-import person from "../assets/images/person.png";
+import person2 from "../assets/images/person2.png";
 
 const PersonalInfo = () => {
   return (
@@ -8,7 +8,7 @@ const PersonalInfo = () => {
       <div className="d-flex align-items-center mb-4">
         <div className="me-3">
           <img
-            src={person}
+            src={person2}
             className="img-rounded-circle"
             style={{ width: "50px", height: "50px" }}
           />
