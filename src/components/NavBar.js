@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom'
-import placeholder from "../assets/images/placeholder.jpg";
+import person from "../assets/images/person1.png";
 import { IoMailOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
 
@@ -26,8 +26,10 @@ function NavBar() {
         return "Restaurants";
       case "/authorities":
         return "Authorities";
-      default:
+      case "/profile":
         return "Profile";
+      default:
+        return "Personal Information";
     }
   };
 
@@ -35,9 +37,14 @@ function NavBar() {
     <div class="row g-0">
       <div
         class="col-md"
-        style={{ justifyContent: "left", marginTop: "2.4%", marginLeft: "3.2%", marginBottom:"24px" }}
+        style={{
+          justifyContent: "left",
+          marginTop: "2.4%",
+          marginLeft: "3.2%",
+          marginBottom: "24px",
+        }}
       >
-        <h1 class="fs-2" style={{ fontWeight: "bold", color:"grey" }}>
+        <h1 class="fs-2" style={{ fontWeight: "bold", color: "grey" }}>
           {getTitle(location.pathname)}
         </h1>
       </div>
@@ -54,9 +61,9 @@ function NavBar() {
           style={{ height: "35px", width: "35px" }}
         />
         <div className="d-flex">
-          <Link to="/home">
+          <Link to="/profile">
             <img
-              src={placeholder}
+              src={person}
               className="img-rounded me-2"
               style={{ width: "50px", height: "50px" }}
             />
