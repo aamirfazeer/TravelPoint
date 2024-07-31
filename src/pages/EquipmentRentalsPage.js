@@ -1,45 +1,94 @@
-import React from "react";
+import React, { useState } from "react";
 import User from "../components/User";
 
 function EquipmentRentalsPage() {
-  const equipment_rentals = [
+  const initialEquipmentRentals = [
     {
       name: "Ms. Tharindu",
       id: "1254851",
-      type: "equipment rental",
+      status: "accepted",
       id_type: "service provider",
     },
     {
       name: "Ms. Senanayake",
       id: "1254852",
-      type: "equipment rental",
+      status: "rejected",
       id_type: "service provider",
     },
     {
       name: "Ms. David",
       id: "1254853",
-      type: "equipment rental",
+      status: "requested",
       id_type: "service provider",
     },
     {
       name: "Ms. Mushahid",
       id: "1254854",
-      type: "equipment rental",
+      status: "accepted",
       id_type: "service provider",
     },
     {
       name: "Ms. Aamir",
       id: "1254855",
-      type: "equipment rental",
+      status: "requested",
       id_type: "service provider",
     },
   ];
 
+  const [equipment_rentals, setEquipmentRentals] = useState(
+    initialEquipmentRentals
+  );
+  const [activeTab, setActiveTab] = useState("accepted");
+
+  const filteredEquipmentRentals = equipment_rentals.filter(
+    (equipment_rental) => equipment_rental.status === activeTab
+  );
+
+  const updateStatus = (id, newStatus) => {
+    setEquipmentRentals((prevEquipmentRentals) =>
+      prevEquipmentRentals.map((equipment_rental) =>
+        equipment_rental.id === id
+          ? { ...equipment_rental, status: newStatus }
+          : equipment_rental
+      )
+    );
+  };
 
   return (
     <div className="row g-0 mt-4 ms-4" style={{ marginRight: "15%" }}>
       <div className="container">
-        <User users={equipment_rentals} type="equipment rental" />
+        <div className="d-flex mb-4">
+          <button
+            className={`btn me-2 ${
+              activeTab === "accepted" ? "btn-primary" : "btn-outline-primary"
+            }`}
+            onClick={() => setActiveTab("accepted")}
+          >
+            Accepted
+          </button>
+          <button
+            className={`btn me-2 ${
+              activeTab === "rejected" ? "btn-danger" : "btn-outline-danger"
+            }`}
+            onClick={() => setActiveTab("rejected")}
+          >
+            Rejected
+          </button>
+          <button
+            className={`btn ${
+              activeTab === "requested" ? "btn-warning" : "btn-outline-warning"
+            }`}
+            onClick={() => setActiveTab("requested")}
+          >
+            Requested
+          </button>
+        </div>
+        <User
+          users={filteredEquipmentRentals}
+          updateStatus={updateStatus}
+          type={activeTab}
+          id_type="equipment rentals"
+        />
       </div>
     </div>
   );

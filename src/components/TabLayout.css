@@ -1,8 +1,7 @@
 .nav-link.tab {
     width: 303px;
     color: #000000;
-    background-color: #dde6ed;
-    border: 1px solid #ccc;
+    background-color: #fff;
     padding: 10px 20px;
     margin-right: -1px;
     cursor: pointer;
@@ -10,14 +9,9 @@
 }
 
 .nav-link.tab.active {
-    color: #ffffff; 
-    background-color: #046197;
-    border: 1px solid #007bff;
-    border-bottom-color: transparent;
+    color: #000000; 
+    border-bottom: 5px solid #0000cc;
     cursor: default;
     font-weight: bold;
 }
 
-.nav-tabs {
-    border-bottom: 1px solid #ccc;
-}
