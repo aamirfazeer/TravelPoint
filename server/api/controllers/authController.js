@@ -1,7 +1,7 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const { findUserByEmail, createUser } = require("../models/userModel");
-require("dotenv").config();
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { findUserByEmail, createUser } from "../models/userModel.js";
+
 
 const register = async (req, res) => {
   const { email, password } = req.body;
@@ -38,7 +38,5 @@ const login = async (req, res) => {
   res.status(200).json({ token });
 };
 
-module.exports = {
-  register,
-  login,
-};
+// Use ES6 export syntax
+export { register, login };
