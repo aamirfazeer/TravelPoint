@@ -11,9 +11,9 @@ dotenv.config();
 const port = process.env.PORT;
 
 const app = express();
+
 app.use(cors());
-app.use(bodyParser.json({ limit: '10mb' })); // Adjust limit as needed
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+app.use(bodyParser.json());
 app.use('/api/users', userRoutes);
 app.use("/api/auth", authRoutes);
 
@@ -41,3 +41,4 @@ const startServer = async () =>{
 startServer();
 
 export default app;
+

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios"
 import scenicImage from "../assets/images/scenic.jpg";
 import { FaRegUser } from "react-icons/fa6";
 import { FiLock } from "react-icons/fi";
@@ -8,11 +9,25 @@ import './LoginPage.css'
 
 const LoginPage = () => {
 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
 
   const togglePasswordVisibility = () => {
     setPasswordShown(!passwordShown);
   };
+
+  const login = async(e) => {
+    e.preventDefault();
+    try{
+      const response = await axios.post("http://localhost:5000/api/auth/login",{
+        username,
+        password
+      }); 
+    }
+  }
+
+
 
   return (
     <div className="login-page-home-body">
@@ -74,8 +89,8 @@ const LoginPage = () => {
             </div>
             
               <div className="mb-3">
-              <Link to="/home">
-              <button
+                <button
+                onClick={onlogin}
                   type="submit"
                   className="btn btn-primary w-50 mt-4 btnn"
                   style={{ marginLeft: "0%" }}>
