@@ -6,9 +6,7 @@ import { GiSchoolBag } from "react-icons/gi";
 import { FaCar } from "react-icons/fa";
 import { GiCampingTent } from "react-icons/gi";
 import { GiSecretBook } from "react-icons/gi";
-import { FaHotel } from "react-icons/fa";
-import { IoShieldCheckmark } from "react-icons/io5";
-import { IoRestaurantSharp } from "react-icons/io5";
+import { TbReportAnalytics } from "react-icons/tb";
 import { RiLogoutBoxFill } from "react-icons/ri";
 import "./SideBar.css"
 
@@ -96,43 +94,17 @@ function SideBar() {
               Travel Guides
             </NavLink>
           </li>
-          <li className="nav-item mb-3 ">
-            <NavLink
-              to="/hotels"
-              className="nav-link rounded text-white fw-bold d-flex align-items-center"
-              activeClassName="bg-light cl"
-            >
-              <FaHotel
-                className="icon me-2"
-                style={{ height: "25px", width: "25px" }}
-              />
-              Hotels
-            </NavLink>
-          </li>
           <li className="nav-item mb-3">
             <NavLink
-              to="/restaurants"
+              to="/Report"
               className="nav-link rounded text-white fw-bold d-flex align-items-center"
               activeClassName="bg-light cl"
             >
-              <IoRestaurantSharp
+              <TbReportAnalytics
                 className="icon me-2"
                 style={{ height: "26px", width: "26px" }}
               />
-              Restaurants
-            </NavLink>
-          </li>
-          <li className="nav-item mb-3">
-            <NavLink
-              to="/authorities"
-              className="nav-link rounded text-white fw-bold d-flex align-items-center"
-              activeClassName="bg-light cl"
-            >
-              <IoShieldCheckmark
-                className="icon me-2"
-                style={{ height: "26px", width: "26px" }}
-              />
-              Authorities
+              Report
             </NavLink>
           </li>
           <li className="nav-item mt-5">

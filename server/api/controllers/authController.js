@@ -1,25 +1,25 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { findUserByEmail, createUser } from "../models/userModel.js";
+import {UserModel } from "../models/userModel.js";
 
 
 const register = async (req, res) => {
   const { email, password } = req.body;
-  const existingUser = await findUserByEmail(email);
+  const existingUser = await UserModel.findUserByEmail(email);
 
   if (existingUser) {
     return res.status(400).json({ message: "User already exists" });
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser = await createUser(email, hashedPassword);
+  const newUser = await UserModel.createUser(email, hashedPassword);
 
   res.status(201).json({ message: "User created", user: newUser });
 };
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  const user = await findUserByEmail(email);
+  const user = await UserModel.findUserByEmail(email);
 
   if (!user) {
     return res.status(400).json({ message: "Invalid email or password" });

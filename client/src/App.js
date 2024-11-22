@@ -3,9 +3,7 @@ import Travellers from "./pages/TravellersPage";
 import VehicleRentals from "./pages/VehicleRentalsPage";
 import EquipmentRentals from "./pages/EquipmentRentalsPage";
 import TravelGuides from "./pages/TravelGuidesPage";
-import Hotels from "./pages/HotelsPage";
-import Restaurants from "./pages/RestaurantsPage";
-import Authorities from "./pages/AuthoritiesPage";
+import Report from "./pages/Report";
 import AdminHome from "./pages/AdminHomePage";
 import TravelLog from "./pages/TravelLog";
 import BookingInfo from "./pages/BookingInfo";
@@ -24,9 +22,7 @@ function App() {
           <Route path="vehicle-rentals" element={<VehicleRentals />} />
           <Route path="equipment-rentals" element={<EquipmentRentals />} />
           <Route path="travel-guides" element={<TravelGuides />} />
-          <Route path="hotels" element={<Hotels />} />
-          <Route path="restaurants" element={<Restaurants />} />
-          <Route path="authorities" element={<Authorities />} />
+          <Route path="Report" element={<Report />} />
           <Route path="personal-info" element={<PersonalInfo />} />
           <Route path="travel-log" element={<TravelLog />} />
           <Route path="booking-info" element={<BookingInfo />} />

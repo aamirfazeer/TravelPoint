@@ -1,15 +1,20 @@
 import express from "express";
 import bodyParser from "body-parser";
 import authRoutes from "./api/routes/authRoutes.js";
+import userRoutes from "./api/routes/userRoutes.js";
 import { pool } from "./api/config/db.js";
 import http from 'http';
 import dotenv from 'dotenv';
+import cors from "cors";
 
 dotenv.config();
 const port = process.env.PORT;
 
 const app = express();
+
+app.use(cors());
 app.use(bodyParser.json());
+app.use('/api/users', userRoutes);
 app.use("/api/auth", authRoutes);
 
 const connectToDatabase = async () => {
@@ -22,7 +27,6 @@ const connectToDatabase = async () => {
   }
 };
  
-
 const startServer = async () =>{
   try{
     await connectToDatabase();
@@ -37,8 +41,4 @@ const startServer = async () =>{
 startServer();
 
 export default app;
-
-
-
-
 
