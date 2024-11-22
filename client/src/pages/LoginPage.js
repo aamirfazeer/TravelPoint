@@ -72,16 +72,17 @@ const LoginPage = () => {
                   className={passwordShown ? "fas fa-eye-slash" : "fas fa-eye"}></i>
               </span>
             </div>
-            <Link to="/home">
+            
               <div className="mb-3">
-                <button
+              <Link to="/home">
+              <button
                   type="submit"
                   className="btn btn-primary w-50 mt-4 btnn"
                   style={{ marginLeft: "0%" }}>
                   Log In
                 </button>
+              </Link>
               </div>
-            </Link>
           </form>
         </div>
       </div>

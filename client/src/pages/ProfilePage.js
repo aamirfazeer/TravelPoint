@@ -1,18 +1,57 @@
-import React, { useState, useRef } from "react";
-import person from "../assets/images/person1.png";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import { BsCameraFill } from "react-icons/bs"; // Import camera icon
+const CURRENT_ADMIN_ID = 11;
 
 function ProfilePage() {
   const [formData, setFormData] = useState({
-    firstName: "Usama",
-    lastName: "Puward",
-    email: "usama1234@gmail.com",
-    address: "123 Main St, Colombo, Sri Lanka",
-    contactNumber: "0771234567",
-    nicPassport: "1234567890123456",
-    profileImage: person,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    location: "",
+    username: "",
+    dateOfBirth: "",
+    bio: "",
+    profilePic: "",
+    nicPassport: "",
   });
 
   const fileInputRef = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchAdminDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/users/${CURRENT_ADMIN_ID}`);
+        const userData = response.data;
+
+        const formattedDate = userData.date_of_birth
+          ? new Date(userData.date_of_birth).toISOString().split('T')[0]
+          : '';
+
+        setFormData({
+          firstName: userData.first_name || "",
+          lastName: userData.last_name || "",
+          email: userData.email || "",
+          nicPassport: userData.nic_passport || "",
+          phoneNumber: userData.phone_number || "",
+          location: userData.location || "",
+          username: userData.username || "",
+          dateOfBirth: formattedDate, // Set the formatted date
+          profilePic: userData.profile_pic || "",
+        });
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching admin details:", error);
+        setError("Failed to fetch admin details.");
+        setLoading(false);
+      }
+    };
+
+    fetchAdminDetails();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +68,7 @@ function ProfilePage() {
       reader.onload = () => {
         setFormData((prevData) => ({
           ...prevData,
-          profileImage: reader.result,
+          profilePic: reader.result,
         }));
       };
       reader.readAsDataURL(file);
@@ -42,10 +81,22 @@ function ProfilePage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission, e.g., send data to the server or update state
-    console.log("Form submitted:", formData);
+    setLoading(true);
+    try {
+      await axios.put(`http://localhost:5000/api/users/${CURRENT_ADMIN_ID}`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      alert("Profile updated successfully!");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Failed to update profile. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,13 +106,48 @@ function ProfilePage() {
           <div className="card-body m-2">
             <div className="d-flex align-items-center mb-4">
               <div className="me-3 position-relative">
-                <img
-                  src={formData.profileImage}
-                  className="img-rounded-circle"
-                  style={{ width: "80px", height: "80px", cursor: "pointer" }}
-                  alt="Profile"
+                <div
+                  className="position-relative"
+                  style={{
+                    width: "90px",
+                    height: "90px",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    cursor: "pointer",
+                    border: "2px solid #007bff",
+                  }}
                   onClick={handleImageClick}
-                />
+                >
+                  <img
+                    src={"data:image/jpg;base64," + formData.profilePic}
+                    alt="Profile"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+                {/* Camera icon outside of the profile picture div, positioned bottom-right */}
+                <div
+                  className="position-absolute bottom-0 end-0 mb-3 me-3"
+                  style={{
+                    zIndex: 10,
+                    cursor: "pointer",
+                    transform: "translate(50%, 50%)",
+                  }}
+                  onClick={handleImageClick}
+                >
+                  <div
+                    className="bg-dark text-white rounded-circle"
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      opacity: 0.8,
+                    }}
+                  >
+                    <BsCameraFill />
+                  </div>
+                </div>
                 <input
                   type="file"
                   ref={fileInputRef}
@@ -118,30 +204,17 @@ function ProfilePage() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="mb-3">
-                <label htmlFor="address" className="form-label fw-bold">
-                  Home Address
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="address"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                />
-              </div>
               <div className="row mb-3">
                 <div className="col-md-6">
-                  <label htmlFor="contactNumber" className="form-label fw-bold">
-                    Contact Number
+                  <label htmlFor="dateOfBirth" className="form-label fw-bold">
+                    Date of Birth
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     className="form-control"
-                    id="contactNumber"
-                    name="contactNumber"
-                    value={formData.contactNumber}
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    value={formData.dateOfBirth}
                     onChange={handleChange}
                   />
                 </div>
@@ -159,9 +232,39 @@ function ProfilePage() {
                   />
                 </div>
               </div>
+              <div className="mb-3">
+                <label htmlFor="location" className="form-label fw-bold">
+                  Home Address
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="location"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="phoneNumber" className="form-label fw-bold">
+                  Contact Number
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                />
+              </div>
               <div className="d-grid">
-                <button type="submit" className="btn btn-primary fw-bold mt-2" style={{width:"20%"}}>
-                  Update Profile
+                <button
+                  type="submit"
+                  className="btn btn-primary fw-bold mt-2"
+                  disabled={loading}
+                >
+                  {loading ? "Updating..." : "Update Profile"}
                 </button>
               </div>
             </form>
