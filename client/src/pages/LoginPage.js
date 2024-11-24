@@ -4,13 +4,15 @@ import axios from "axios"
 import scenicImage from "../assets/images/scenic.jpg";
 import { FaRegUser } from "react-icons/fa6";
 import { FiLock } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './LoginPage.css'
 
 const LoginPage = () => {
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   const [passwordShown, setPasswordShown] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -21,13 +23,18 @@ const LoginPage = () => {
     e.preventDefault();
     try{
       const response = await axios.post("http://localhost:5000/api/auth/login",{
-        username,
+        email,
         password
       }); 
+      const {token, user} = response.data;
+      localStorage.setItem("authToken", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      navigate("home");
     }
-  }
-
-
+    catch(error){
+      setError(error.response.message || "Login Failed!");
+    }
+  };
 
   return (
     <div className="login-page-home-body">
@@ -48,7 +55,6 @@ const LoginPage = () => {
                 htmlFor="username"
                 className="form-label field"
                 style={{ fontSize: "0.9rem", color: "#000000", fontWeight:"bold" }}>
-              
                 Email or username
               </label>
               <div className="input-group  border-primary border-3">
@@ -59,9 +65,12 @@ const LoginPage = () => {
                   type="text"
                   className="form-control"
                   id="username"
-                  placeholder={"Username"}/>
+                  placeholder={"Username"}
+                  onChange={(e) => setEmail(e.target.value)}
+                  />
               </div>
             </div>
+
             <div className="mb-3 position-relative">
               <label
                 htmlFor="password"
@@ -76,6 +85,7 @@ const LoginPage = () => {
                 <input
                   type={passwordShown ? "text" : "password"}
                   className="form-control"
+                  onChange={(e) => setPassword(e.target.value)}
                   id="password"
                   placeholder="Password"/>
               </div>
@@ -90,13 +100,12 @@ const LoginPage = () => {
             
               <div className="mb-3">
                 <button
-                onClick={onlogin}
+                onClick={login}
                   type="submit"
                   className="btn btn-primary w-50 mt-4 btnn"
                   style={{ marginLeft: "0%" }}>
                   Log In
                 </button>
-              </Link>
               </div>
           </form>
         </div>
