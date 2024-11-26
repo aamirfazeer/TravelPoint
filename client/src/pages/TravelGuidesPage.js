@@ -4,31 +4,31 @@ import User from "../components/User";
 function TravelGuidesPage() {
   const initialTravelGuides = [
     {
-      name: "Ms. Tharindu",
+      name: "Mr. Nipun",
       id: "1254851",
       status: "accepted",
       id_type: "service provider",
     },
     {
-      name: "Ms. Senanayake",
+      name: "Mr. Buddika",
       id: "1254852",
       status: "rejected",
       id_type: "service provider",
     },
     {
-      name: "Ms. David",
+      name: "Mr. amila",
       id: "1254853",
       status: "requested",
       id_type: "service provider",
     },
     {
-      name: "Ms. Mushahid",
+      name: "Mr. Dulmina",
       id: "1254854",
       status: "accepted",
       id_type: "service provider",
     },
     {
-      name: "Ms. Aamir",
+      name: "Mr. Nimal",
       id: "1254855",
       status: "requested",
       id_type: "service provider",
