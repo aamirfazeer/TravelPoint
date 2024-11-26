@@ -4,31 +4,31 @@ import User from "../components/User";
 function EquipmentRentalsPage() {
   const initialEquipmentRentals = [
     {
-      name: "Ms. Tharindu",
+      name: "Mr. Yuhanga",
       id: "1254851",
       status: "accepted",
       id_type: "service provider",
     },
     {
-      name: "Ms. Senanayake",
+      name: "Mr. Induwara",
       id: "1254852",
       status: "rejected",
       id_type: "service provider",
     },
     {
-      name: "Ms. David",
+      name: "Ms. Amali",
       id: "1254853",
       status: "requested",
       id_type: "service provider",
     },
     {
-      name: "Ms. Mushahid",
+      name: "Ms. Kulathunga",
       id: "1254854",
       status: "accepted",
       id_type: "service provider",
     },
     {
-      name: "Ms. Aamir",
+      name: "Ms. Lakshika",
       id: "1254855",
       status: "requested",
       id_type: "service provider",

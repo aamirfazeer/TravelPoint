@@ -53,31 +53,31 @@ import User from "../components/User";
 function TravellersPage() {
   const initialTravellers = [
     {
-      name: "Ms. Tharindu",
+      name: "Mr. Supun",
       id: "1254851",
       status: "accepted",
       id_type: "traveller",
     },
     {
-      name: "Ms. Senanayake",
+      name: "Mr. Abdullah",
       id: "1254852",
       status: "rejected",
       id_type: "traveller",
     },
     {
-      name: "Ms. David",
+      name: "Mr. jhone",
       id: "1254853",
       status: "requested",
       id_type: "traveller",
     },
     {
-      name: "Ms. Mushahid",
+      name: "Mr. Mushahid",
       id: "1254854",
       status: "accepted",
       id_type: "traveller",
     },
     {
-      name: "Ms. Aamir",
+      name: "Mr. Kevin",
       id: "1254855",
       status: "requested",
       id_type: "traveller",
