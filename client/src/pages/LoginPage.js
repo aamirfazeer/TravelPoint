@@ -1,6 +1,5 @@
-import React from "react";
-import { useState } from "react";
-import axios from "axios"
+import React, { useState } from "react";
+import axios from "axios";
 import scenicImage from "../assets/images/scenic.jpg";
 import { FaRegUser } from "react-icons/fa6";
 import { FiLock } from "react-icons/fi";
@@ -19,7 +18,7 @@ const LoginPage = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const login = async(e) => {
+  const login = async (e) => {
     e.preventDefault();
     try{
       const response = await axios.post("http://localhost:5000/api/auth/login",{
@@ -50,7 +49,8 @@ const LoginPage = () => {
           <form>
             <h2
               className="card-title mb-5 text-center"
-              style={{ color: "#000000", fontWeight: "600" }}>
+              style={{ color: "#000000", fontWeight: "600" }}
+            >
               Login to your account
             </h2>
             <div className="mb-3">
@@ -60,7 +60,7 @@ const LoginPage = () => {
                 style={{ fontSize: "0.9rem", color: "#000000", fontWeight:"bold" }}>
                 Email or username
               </label>
-              <div className="input-group  border-primary border-3">
+              <div className="input-group border-primary border-3">
                 <span className="input-group-text">
                   <FaRegUser />
                 </span>
@@ -78,7 +78,8 @@ const LoginPage = () => {
               <label
                 htmlFor="password"
                 className="form-label field"
-                style={{ fontSize: "0.9rem", color: "#000000", fontWeight: "bold" }}>
+                style={{ fontSize: "0.9rem", color: "#000000", fontWeight: "bold" }}
+              >
                 Password
               </label>
               <div className="input-group border-primary border-3">
@@ -90,14 +91,18 @@ const LoginPage = () => {
                   className="form-control"
                   onChange={(e) => setPassword(e.target.value)}
                   id="password"
-                  placeholder="Password"/>
+                  placeholder="Password"
+                  value={password}
+                />
               </div>
               <span
                 className="position-absolute top-50 end-0 translate-top-y me-3 mt-1"
                 style={{ cursor: "pointer" }}
-                onClick={togglePasswordVisibility}>
+                onClick={togglePasswordVisibility}
+              >
                 <i
-                  className={passwordShown ? "fas fa-eye-slash" : "fas fa-eye"}></i>
+                  className={passwordShown ? "fa fa-eye-slash" : "fa fa-eye"}
+                ></i>
               </span>
             </div>
             

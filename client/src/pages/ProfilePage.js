@@ -119,7 +119,7 @@ const ProfilePage = () => {
                   onClick={handleImageClick}
                 >
                   <img
-                    src={"data:image/jpg;base64," + formData.profilePic}
+                    src={"data:image/jpeg;base64," + formData.profilePic}
                     alt="Profile"
                     style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
