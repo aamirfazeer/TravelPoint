@@ -9,7 +9,7 @@ import TravelLog from "./pages/TravelLog";
 import BookingInfo from "./pages/BookingInfo";
 import PersonalInfo from "./pages/PersonalInfo";
 import Login from "./pages/LoginPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ProfilePage from "./pages/ProfilePage";
 
 function App() {
@@ -23,9 +23,13 @@ function App() {
           <Route path="equipment-rentals" element={<EquipmentRentals />} />
           <Route path="travel-guides" element={<TravelGuides />} />
           <Route path="Report" element={<Report />} />
-          <Route path="personal-info" element={<PersonalInfo />} />
-          <Route path="travel-log" element={<TravelLog />} />
-          <Route path="booking-info" element={<BookingInfo />} />
+          <Route path="user" element={<Navigate to="/travellers" />} />
+          <Route path="user/:id">
+            <Route path="" element={<Navigate to="/travellers" />} />
+            <Route path="personal-info" element={<PersonalInfo />} />
+            <Route path="travel-log" element={<TravelLog />} />
+            <Route path="booking-info" element={<BookingInfo />} />
+          </Route>
           <Route path="profile" element={<ProfilePage />} />
           <Route path="home" element={<AdminHome />} />
         </Route>

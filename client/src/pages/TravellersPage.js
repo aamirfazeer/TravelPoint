@@ -54,13 +54,13 @@ function TravellersPage() {
   const initialTravellers = [
     {
       name: "Mr. Supun",
-      id: "1254851",
+      id: "6",
       status: "accepted",
       id_type: "traveller",
     },
     {
       name: "Mr. Abdullah",
-      id: "1254852",
+      id: "125485",
       status: "rejected",
       id_type: "traveller",
     },
@@ -72,7 +72,7 @@ function TravellersPage() {
     },
     {
       name: "Mr. Mushahid",
-      id: "1254854",
+      id: "12",
       status: "accepted",
       id_type: "traveller",
     },

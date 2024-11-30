@@ -1,37 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import TabLayout from "../components/TabLayout";
-import post1 from "../assets/images/post1.png"
-import post2 from "../assets/images/post2.png";
-import person2 from "../assets/images/person2.png"
 import PostCard from "../components/PostCard";
 
 const TravelLog = () => {
-  const posts = [
-    {
-      username: "W.J.Perera",
-      location: "Colombo, Sri Lanka",
-      date: "12 November",
-      profileImage: person2,
-      image: post1,
-      caption: "The best place to visit in Sri Lanka",
-      likes: 73,
-    },
-    {
-      username: "W.J.Perera",
-      location: "Kandy, Sri Lanka",
-      date: "20 January",
-      profileImage: person2,
-      image: post2,
-      caption: "The best place to visit in Sri Lanka",
-      likes: 198,
-    },
-  ];
+  const { id: userId } = useParams();
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(`/api/posts/${userId}`);
+        setPosts(response.data);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, [userId]);
+
+  if (loading) {
+    return (
+      <TabLayout>
+        <div className="container">Loading...</div>
+      </TabLayout>
+    );
+  };
+
   return (
     <TabLayout>
       <div className="container">
-        {posts.map((post, index) => (
-          <PostCard key={index} post={post} />
-        ))}
+        {posts.length > 0 ? (
+          posts.map((post, index) => <PostCard key={index} post={post} />)
+        ) : (
+          <div>No posts found for this user.</div>
+        )}
       </div>
     </TabLayout>
   );

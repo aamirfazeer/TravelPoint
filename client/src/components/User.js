@@ -61,7 +61,7 @@ function User({ users, id_type, updateStatus , type }) {
                   </select>
                 </div>
                 <div className="me-2">
-                  <Link to="/personal-info">
+                  <Link to={`/user/${user.id}/personal-info`}>
                     <button
                       className="btn btn-sm"
                       style={{ backgroundColor: "#046197", color: "white" }}
