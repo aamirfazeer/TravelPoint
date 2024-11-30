@@ -5,7 +5,7 @@ import person from "../assets/images/person1.png";
 import { IoMailOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
 
-function NavBar() {
+const NavBar = ({user}) => {
   const location = useLocation();
 
   const getTitle = (path) => {
@@ -34,22 +34,22 @@ function NavBar() {
   };
 
   return (
-    <div class="row g-0">
+    <div className="row g-0">
       <div
-        class="col-md"
+        className="col-md"
         style={{
           justifyContent: "left",
-          marginTop: "2.4%",
+          marginTop: "1.4%",
           marginLeft: "3.2%",
           marginBottom: "24px",
         }}
       >
-        <h1 class="fs-2" style={{ fontWeight: "bold", color: "grey" }}>
+        <h1 className="fs-2" style={{ fontWeight: "bold", color: "grey" }}>
           {getTitle(location.pathname)}
         </h1>
       </div>
       <div
-        class="col-md d-flex justify-content-right mt-3 mb-3 me-3"
+        className="col-md d-flex justify-content-right mt-3 mb-3 me-3"
         style={{ justifyContent: "right" }}
       >
         <IoMailOutline
@@ -70,7 +70,7 @@ function NavBar() {
           </Link>
           <div className="d-flex flex-column g-0 m-0 p-0">
             <h2 className="fs-5" style={{ fontWeight: "bold" }}>
-              Usama Puward
+              {user?.first_name} {user?.last_name}
             </h2>
             <h6 className="fs-9">System Admin</h6>
           </div>

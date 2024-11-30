@@ -26,13 +26,16 @@ const LoginPage = () => {
         email,
         password
       }); 
+      console.log("Resp:", response.data)
       const {token, user} = response.data;
       localStorage.setItem("authToken", token);
       localStorage.setItem("user", JSON.stringify(user));
-      navigate("home");
+      navigate("home", {state: { user }});
     }
-    catch(error){
-      setError(error.response.message || "Login Failed!");
+    catch (error) {
+      const errorMessage =
+        error.response?.data?.message || error.message || "Login Failed!";
+      setError(errorMessage);
     }
   };
 

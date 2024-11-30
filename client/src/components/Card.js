@@ -2,7 +2,7 @@ import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
 
-function Card( {image} ) {
+const Card = ({image} ) => {
   return (
     <div class="image-card">
       <div class="card-body">
@@ -11,8 +11,7 @@ function Card( {image} ) {
             <img
               src={image.src}
               alt={image.title}
-              className="img-fluid rounded"
-            />
+              className="img-fluid rounded"/>
             <div className="overlay">
               <div className="text">{image.title} (12)</div>
             </div>
