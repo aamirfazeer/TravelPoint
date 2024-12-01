@@ -34,7 +34,7 @@ const connectToDatabase = async () => {
   }
 };
 
-// Start server
+// Start Server
 const startServer = async () => {
   try {
     await connectToDatabase();

@@ -80,7 +80,7 @@ const TravelGuidesPage = () => {
                    ID.No - {guide.id}
               </div>
               <div className="me-2">
-                <Link to="/request">
+                <Link to={`/guide-request/${guide.id}`}>
                   <button
                     className="btn "
                     style={{ backgroundColor: "#0069FF", color: "white", fontWeight:"bold", borderRadius:"20px" }}>

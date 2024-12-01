@@ -2,9 +2,8 @@ import React from 'react'
 
 const EquipmentRequest = () => {
   return (
-<div>
-      <h2>Request Details</h2>
-      <div>
+    <div className="container mt-5">
+      <div className="card shadow-lg p-4">
         <p><strong>User ID: </strong> </p>
         <p><strong>Name: </strong> </p>
         <p><strong>Location: </strong> </p>

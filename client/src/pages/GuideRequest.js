@@ -1,10 +1,9 @@
 import React from 'react'
 
-const RequestProfile = () => {
+const GuideRequest = () => {
   return (
-    <div>
-      <h2>Request Details</h2>
-      <div>
+    <div className="container mt-5">
+      <div className="card shadow-lg p-2">
         <p><strong>User ID: </strong> </p>
         <p><strong>Name: </strong> </p>
         <p><strong>Location: </strong> </p>
@@ -18,4 +17,4 @@ const RequestProfile = () => {
   )
 }
 
-export default RequestProfile
+export default GuideRequest

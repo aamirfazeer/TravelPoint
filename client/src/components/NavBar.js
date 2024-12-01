@@ -20,16 +20,16 @@ const NavBar = ({user}) => {
         return "Equipment Rentals";
       case "/travel-guides":
         return "Travel Guides";
-      case "/hotels":
-        return "Hotels";
-      case "/restaurants":
-        return "Restaurants";
-      case "/authorities":
-        return "Authorities";
       case "/profile":
         return "Profile";
+      case "/guide-request":
+        return "Guide Request"; 
+      case "/equipment-request":
+        return "Equipment Request";
+      case "/vehicle-request":
+        return "Vehicle Request"; 
       default:
-        return "Personal Information";
+        return "";
     }
   };
 

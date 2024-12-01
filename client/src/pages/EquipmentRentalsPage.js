@@ -79,7 +79,7 @@ const EquipmentRentalsPage = () => {
                    ID.No - {equipment.id}
               </div>
               <div className="me-2">
-                <Link to="/request">
+                <Link to={`/equipment-request/${equipment.id}`}>
                   <button
                     className="btn "
                     style={{ backgroundColor: "#0069FF", color: "white", fontWeight:"bold", borderRadius:"20px" }}>
