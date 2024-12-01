@@ -4,6 +4,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import authRoutes from "./api/routes/authRoutes.js"; // Ensure authRoutes.js exists or comment out if not needed
 import userRoutes from "./api/routes/userRoutes.js";
+import postRoutes from "./api/routes/postRoutes.js";
 import { pool } from "./api/config/db.js";
 import http from 'http';
 import dotenv from 'dotenv';
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use("/api/posts", postRoutes);
 app.use("/api/auth", authRoutes); // Ensure authRoutes.js exists or comment out if not needed
 
 // Connect to database

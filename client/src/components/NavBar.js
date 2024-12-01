@@ -9,24 +9,27 @@ const NavBar = ({user}) => {
   const location = useLocation();
 
   const getTitle = (path) => {
-    switch (path) {
-      case "/home":
+    const url = path.split("/");
+    switch (url[1]) {
+      case "home":
         return "Dashboard";
-      case "/travellers":
+      case "travellers":
         return "Travellers";
-      case "/vehicle-rentals":
+      case "vehicle-rentals":
         return "Vehicle Rentals";
-      case "/equipment-rentals":
+      case "equipment-rentals":
         return "Equipment Rentals";
-      case "/travel-guides":
+      case "travel-guides":
         return "Travel Guides";
-      case "/profile":
+      case "profile":
         return "Profile";
-      case "/guide-request":
+      case "user":
+        return "User Profile";
+      case "guide-request":
         return "Guide Request"; 
-      case "/equipment-request":
+      case "equipment-request":
         return "Equipment Request";
-      case "/vehicle-request":
+      case "vehicle-request":
         return "Vehicle Request"; 
       default:
         return "";

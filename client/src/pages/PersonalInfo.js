@@ -1,22 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import TabLayout from "../components/TabLayout";
-import person2 from "../assets/images/person2.png";
+import person from "../assets/images/placeholder.jpg";
 
 const PersonalInfo = () => {
+  const { id: userId } = useParams();
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`/api/users/${userId}`);
+        setUser(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
+    };
+
+    fetchUser();
+  }, [userId]);
+
+  const pro_pic = user.profile_pic ? `data:image/jpeg;base64,${user.profile_pic}` : person;
+
   return (
     <TabLayout>
       <div className="d-flex align-items-center mb-4">
         <div className="me-3">
           <img
-            src={person2}
-            className="img-rounded-circle"
+            src={pro_pic}
+            className="rounded-circle"
             style={{ width: "50px", height: "50px" }}
           />
         </div>
         <div>
-          <h5 className="card-title mb-0 fw-bold fs-4">Ms. Perera</h5>
+          <h5 className="card-title mb-0 fw-bold fs-4">{user.first_name} {user.last_name}</h5>
           <a href="#" className="text-decoration-none">
-            Traveller ID #1254852
+            ID: {user.id}  |   @{user.username ? user.username : "<unavailable>"}
           </a>
         </div>
       </div>
@@ -30,7 +51,7 @@ const PersonalInfo = () => {
               type="text"
               className="form-control"
               id="firstName"
-              defaultValue="Thisara"
+              defaultValue={user.first_name}
               readOnly
             />
           </div>
@@ -42,7 +63,7 @@ const PersonalInfo = () => {
               type="text"
               className="form-control"
               id="lastName"
-              defaultValue="Perera"
+              defaultValue={user.last_name}
               readOnly
             />
           </div>
@@ -55,19 +76,19 @@ const PersonalInfo = () => {
             type="email"
             className="form-control"
             id="email"
-            defaultValue="perera1234@gmail.com"
+            defaultValue={user.email}
             readOnly
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="address" className="form-label fw-bold">
-            Home Address
+          <label htmlFor="location" className="form-label fw-bold">
+            Location
           </label>
           <input
             type="text"
             className="form-control"
-            id="address"
-            defaultValue="123 Main St, Colombo, Sri Lanka"
+            id="location"
+            defaultValue={user.location}
             readOnly
           />
         </div>
@@ -80,7 +101,7 @@ const PersonalInfo = () => {
               type="text"
               className="form-control"
               id="contactNumber"
-              defaultValue="0771234567"
+              defaultValue={user.phone_number}
               readOnly
             />
           </div>
@@ -92,7 +113,7 @@ const PersonalInfo = () => {
               type="text"
               className="form-control"
               id="nicPassport"
-              defaultValue="1234567890123456"
+              defaultValue={user.nic_passport}
               readOnly
             />
           </div>
