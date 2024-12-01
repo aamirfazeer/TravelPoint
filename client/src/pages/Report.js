@@ -1,90 +1,26 @@
 import React, { useState } from "react";
-import User from "../components/User";
+import UserRow from "../components/UserRow";
 
-function AuthoritiesPage() {
-  const initialAuthorities = [
-    {
-      name: "Ms. Tharindu",
-      id: "1254851",
-      status: "accepted",
-      id_type: "service provider",
-    },
-    {
-      name: "Ms. Senanayake",
-      id: "1254852",
-      status: "rejected",
-      id_type: "service provider",
-    },
-    {
-      name: "Ms. David",
-      id: "1254853",
-      status: "requested",
-      id_type: "service provider",
-    },
-    {
-      name: "Ms. Mushahid",
-      id: "1254854",
-      status: "accepted",
-      id_type: "service provider",
-    },
-    {
-      name: "Ms. Aamir",
-      id: "1254855",
-      status: "requested",
-      id_type: "service provider",
-    },
-  ];
-
-  const [authorities, setAuthorities] = useState(initialAuthorities);
-  const [activeTab, setActiveTab] = useState("accepted");
-
-  const filteredAuthorities = authorities.filter(
-    (authority) => authority.status === activeTab
-  );
-
-  const updateStatus = (id, newStatus) => {
-    setAuthorities((prevAthorities) =>
-      prevAthorities.map((authority) =>
-        authority.id === id ? { ...authority, status: newStatus } : authority
-      )
-    );
-  };
+const AuthoritiesPage = () => {
 
   return (
     <div className="row g-0 mt-4 ms-4" style={{ marginRight: "15%" }}>
       <div className="container">
         <div className="d-flex mb-4">
           <button
-            className={`btn me-2 ${
-              activeTab === "accepted" ? "btn-primary" : "btn-outline-primary"
-            }`}
-            onClick={() => setActiveTab("accepted")}
-          >
+            className={`btn me-2`}>
             Accepted
           </button>
           <button
-            className={`btn me-2 ${
-              activeTab === "rejected" ? "btn-danger" : "btn-outline-danger"
-            }`}
-            onClick={() => setActiveTab("rejected")}
-          >
+            className={`btn me-2`}>
             Rejected
           </button>
           <button
-            className={`btn ${
-              activeTab === "requested" ? "btn-warning" : "btn-outline-warning"
-            }`}
-            onClick={() => setActiveTab("requested")}
-          >
+            className={`btn`}>
             Requested
           </button>
         </div>
-        <User
-          users={filteredAuthorities}
-          updateStatus={updateStatus}
-          type={activeTab}
-          id_type="authorities"
-        />
+        <UserRow/>
       </div>
     </div>
   );

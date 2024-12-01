@@ -3,7 +3,7 @@ import axios from "axios";
 import { BsCameraFill } from "react-icons/bs"; // Import camera icon
 const CURRENT_ADMIN_ID = 11;
 
-function ProfilePage() {
+const ProfilePage = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
