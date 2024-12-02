@@ -4,43 +4,8 @@ import axios from "axios";
 import TabLayout from "../components/TabLayout";
 import person from "../assets/images/placeholder.jpg";
 
-// const bookingData = [
-//   {
-//     service: "Toyota Corolla",
-//     provider: "AAA Car Rentals",
-//     amount: "2000.00 LKR",
-//     status: "Delivered",
-//     statusColor: "text-success",
-//     statusIcon: "✔️",
-//   },
-//   {
-//     service: "3 Person Tent",
-//     provider: "AAA Tools",
-//     amount: "1000.00 LKR",
-//     status: "Requested",
-//     statusColor: "text-danger",
-//     statusIcon: "❌",
-//   },
-//   {
-//     service: "Suzuki WagonR",
-//     provider: "AAA Car Rentals",
-//     amount: "1500.00 LKR",
-//     status: "Requested",
-//     statusColor: "text-danger",
-//     statusIcon: "❌",
-//   },
-//   {
-//     service: "Toyota Axio",
-//     provider: "AAA Car Rentals",
-//     amount: "2000.00 LKR",
-//     status: "Delivered",
-//     statusColor: "text-success",
-//     statusIcon: "✔️",
-//   },
-// ];
-
 const getBookingStatus = (booking) => {
-  const now = new Date(); // Current date and time
+  const now = new Date();
   const deliverDate = new Date(booking.deliver_date);
   const returnDate = new Date(booking.return_date);
 
@@ -52,14 +17,14 @@ const getBookingStatus = (booking) => {
     return "Returned";
   }
 
-  return "Unknown Status"; // Fallback in case of unexpected values
+  return "Unknown Status";
 };
 
 const calculateDaysBetween = (startDate, endDate) => {
   const start = new Date(startDate);
   const end = new Date(endDate);
   const timeDifference = end - start;
-  const daysDifference = timeDifference / (1000 * 3600 * 24); // Convert milliseconds to days
+  const daysDifference = timeDifference / (1000 * 3600 * 24);
   return daysDifference;
 };
 
@@ -127,10 +92,9 @@ const BookingInfo = () => {
         </div>
         <hr></hr>
         {bookings.map((booking) => {
-          const status = getBookingStatus(booking); // Compute the status
+          const status = getBookingStatus(booking);
 
           
-          // Calculate the total price based on the number of days between deliver and return dates
           const daysBetween = calculateDaysBetween(booking.deliver_date, booking.return_date);
           let totalPrice = 0;
 
@@ -145,7 +109,7 @@ const BookingInfo = () => {
               totalPrice = daysBetween * booking.vehicle[0]?.price;
               break;
             default:
-              totalPrice = 0; // In case the type is unknown
+              totalPrice = 0;
           }
 
 
