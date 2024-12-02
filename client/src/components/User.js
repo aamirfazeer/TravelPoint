@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoPersonSharp } from "react-icons/io5";
 import { MdPersonSearch } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import UserSearch from "./UserSearch";
 
 // updateStatus , type 
 function User({ users, id_type}) {
   // const handleStatusChange = (id, event) => {
   //   updateStatus(id, event.target.value);
   // };
+
+  const [filteredUsers, setFilteredUsers] = useState(users);
+
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, [users]);
 
   return (
     <div className="card shadow-lg">
@@ -17,22 +24,13 @@ function User({ users, id_type}) {
           <h5 className="card-title fs-4 fw-bold mb-3">
             Search {id_type}
           </h5>
-          <div className="d-flex mb-4 align-items-center">
-            <MdPersonSearch className="me-2" style={{ fontSize: "45px" }} />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter name/ID here"
-            />
-            <span>
-              <FaSearch style={{ marginLeft: "10px" }} />
-            </span>
-          </div>
+          <UserSearch users={users} onFilteredUsers={setFilteredUsers} />
         </div>
         <hr />
         <div className="mt-4">
           <div>
-            {users.map((user, index) => (
+            {filteredUsers.length > 0 ? (
+              filteredUsers.map((user, index) => (
               <div
                 key={index}
                 className="d-flex align-items-center justify-content-between py-2 mb-2 bg-white"
@@ -72,7 +70,10 @@ function User({ users, id_type}) {
                   </Link>
                 </div>
               </div>
-            ))}
+            ))
+          ) : (
+            <div className="text-center mt-4">No users found.</div>
+          )}
           </div>
         </div>
       </div>
