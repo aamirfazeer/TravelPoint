@@ -1,5 +1,6 @@
 import { Router } from "express";
 import UserController from "../controllers/userController.js";
+import { getUserBookings } from "../controllers/bookingController.js";
 
 const router = Router();
 
@@ -16,4 +17,6 @@ router.get("/equipment/:id", UserController.getEquipmentbyId);
 router.put("/equipment/:id", UserController.updateEquipmentbyId);
 router.put("/equipment/:id", UserController.updateEquipmentbyId);
 router.get("/download-report", UserController.downloadReport);
+router.get("/:id/bookings", getUserBookings);
+
 export default router;

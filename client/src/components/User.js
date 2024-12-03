@@ -1,37 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoPersonSharp } from "react-icons/io5";
 import { MdPersonSearch } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import UserSearch from "./UserSearch";
 
-function User({ users, id_type, updateStatus , type }) {
-  const handleStatusChange = (id, event) => {
-    updateStatus(id, event.target.value);
-  };
+// updateStatus , type 
+function User({ users, id_type}) {
+  // const handleStatusChange = (id, event) => {
+  //   updateStatus(id, event.target.value);
+  // };
+
+  const [filteredUsers, setFilteredUsers] = useState(users);
+
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, [users]);
 
   return (
     <div className="card shadow-lg">
       <div className="card-body p-4" style={{ backgroundColor: "#EFF2FB" }}>
         <div className="mb-3">
           <h5 className="card-title fs-4 fw-bold mb-3">
-            Search {type} {id_type}
+            Search {id_type}
           </h5>
-          <div className="d-flex mb-4 align-items-center">
-            <MdPersonSearch className="me-2" style={{ fontSize: "45px" }} />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter name/ID here"
-            />
-            <span className="position-absolute" style={{ marginLeft: "855px" }}>
-              <FaSearch className="fs-5" />
-            </span>
-          </div>
+          <UserSearch users={users} onFilteredUsers={setFilteredUsers} />
         </div>
         <hr />
         <div className="mt-4">
           <div>
-            {users.map((user, index) => (
+            {filteredUsers.length > 0 ? (
+              filteredUsers.map((user, index) => (
               <div
                 key={index}
                 className="d-flex align-items-center justify-content-between py-2 mb-2 bg-white"
@@ -39,12 +38,12 @@ function User({ users, id_type, updateStatus , type }) {
               >
                 <div style={{ width: "20%" }}>
                   <IoPersonSharp className="ms-2 me-2" />
-                  {user.name}
+                  {user.first_name} {user.last_name}
                 </div>
-                <div style={{ textAlign: "right" }}>
+                <div style={{ textAlign: "left" }}>
                   {id_type} ID #{user.id}
                 </div>
-                <div>
+                {/* <div>
                   <select
                     value={user.status}
                     onChange={(e) => handleStatusChange(user.id, e)}
@@ -59,7 +58,7 @@ function User({ users, id_type, updateStatus , type }) {
                     <option value="rejected">Rejected</option>
                     <option value="requested">Requested</option>
                   </select>
-                </div>
+                </div> */}
                 <div className="me-2">
                   <Link to={`/user/${user.id}/personal-info`}>
                     <button
@@ -71,7 +70,10 @@ function User({ users, id_type, updateStatus , type }) {
                   </Link>
                 </div>
               </div>
-            ))}
+            ))
+          ) : (
+            <div className="text-center mt-4">No users found.</div>
+          )}
           </div>
         </div>
       </div>
