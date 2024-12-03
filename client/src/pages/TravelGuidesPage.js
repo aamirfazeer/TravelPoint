@@ -7,6 +7,7 @@ import axios from "axios";
 
 const TravelGuidesPage = () => {
 
+  const [searchTerm, setSearchtTerm] = useState("");
   const [guides, setGuides] = useState([]);
   const [statusFilter, setStatusFilter] = useState(1);
 
@@ -58,39 +59,43 @@ const TravelGuidesPage = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter name/ID here"/>
+              placeholder="Enter name/ID here"
+              value={searchTerm}
+              onChange={(e)=> setSearchtTerm(e.target.value)}
+              />
             <span className="position-absolute" style={{ marginLeft: "855px" }}>
               <FaSearch className="fs-5" />
             </span>
           </div>
        
           {guides.length > 0 ?(
-          guides.map((guide) => (
-
-
-<div className="mt-2">
-      <div className="" >
-          <div className="d-flex align-items-center justify-content-between py-2 mb-2 bg-white"
-            style={{ borderRadius: "10px" }}>
-              <div style={{width:"25%"}}>
-                <IoPersonSharp className="ms-2 me-2" />
-                {guide.name}
-              </div>
-              <div>
-                   ID.No - {guide.id}
-              </div>
-              <div className="me-2">
-                <Link to={`/guide-request/${guide.id}`}>
-                  <button
+            guides.filter((guide) =>
+            guide.first_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            guide.id?.toString().includes(searchTerm)
+            ).map((guide) => (
+            <div className="mt-2" key={guide.location}>
+              <div className="" >
+                <div className="d-flex align-items-center justify-content-between py-2 mb-2 bg-white"
+                  style={{ borderRadius: "10px" }}>
+                  <div style={{width:"25%"}}>
+                    <IoPersonSharp className="ms-2 me-2" />
+                    {guide.first_name}
+                  </div>
+                  <div>
+                    ID.No - {guide.id}
+                  </div>
+                  <div className="me-2">
+                    <Link to={`/guide-request/${guide.id}`}>
+                    <button
                     className="btn "
                     style={{ backgroundColor: "#0069FF", color: "white", fontWeight:"bold", borderRadius:"20px" }}>
                     View Request
                     </button>
-                </Link>
+                    </Link>
+                  </div>
+                </div>                        
               </div>
-            </div>                        
-        </div>
-    </div>
+            </div>
 
           ))       
           ): (

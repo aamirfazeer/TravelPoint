@@ -7,6 +7,7 @@ import axios from "axios";
 
 const VehicleRentalsPage = () => {
 
+  const [searchTerm, SetSearchterm] = useState("");
   const [vehicles, setVehicles] = useState([]);
   const [statusFilter, setStatusFilter] = useState(1);
 
@@ -59,38 +60,44 @@ const VehicleRentalsPage = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter name/ID here"/>
+              placeholder="Enter name/ID here"
+              value={searchTerm}
+              onChange={(e) => SetSearchterm(e.target.value)}
+              />
             <span className="position-absolute" style={{ marginLeft: "855px" }}>
               <FaSearch className="fs-5" />
             </span>
           </div>
 
       {vehicles.length > 0 ?(
-        vehicles.map((vehicle) => (
-<div className="mt-2">
-      <div className="" >
-          <div className="d-flex align-items-center justify-content-between py-2 mb-2 bg-white"
-            style={{ borderRadius: "10px" }}>
-              <div style={{width:"25%"}}>
-                <IoPersonSharp className="ms-2 me-2" />
-                {vehicle.type}
+        vehicles.filter((vehicle) =>
+        vehicle.type?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        vehicle.id?.toString().includes(searchTerm)
+        ).map((vehicle) => (
+          <div className="mt-2" key={vehicle.id}>
+            <div className="" >
+                <div className="d-flex align-items-center justify-content-between py-2 mb-2 bg-white"
+                  style={{ borderRadius: "10px" }}>
+                    <div style={{width:"25%"}}>
+                      <IoPersonSharp className="ms-2 me-2" />
+                      {vehicle.type}
+                    </div>
+                    <div>
+                      ID.No - {vehicle.id}
+                    </div>
+                    <div className="me-2">
+                      <Link to={`/vehicle-request/${vehicle.id}`}>
+                        <button
+                          className="btn "
+                          style={{ backgroundColor: "#0069FF", color: "white", fontWeight:"bold", borderRadius:"20px" }}>
+                          View Request
+                          </button>
+                      </Link>
+                    </div>
+                  </div>                        
               </div>
-              <div>
-                   ID.No - {vehicle.id}
-              </div>
-              <div className="me-2">
-                <Link to={`/vehicle-request/${vehicle.id}`}>
-                  <button
-                    className="btn "
-                    style={{ backgroundColor: "#0069FF", color: "white", fontWeight:"bold", borderRadius:"20px" }}>
-                    View Request
-                    </button>
-                </Link>
-              </div>
-            </div>                        
-        </div>
-    </div>        ))
-        
+          </div>        
+    ))    
       ): (
         <p>No vehicles Found!</p>
       )}

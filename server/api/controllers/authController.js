@@ -3,8 +3,6 @@ import jwt from "jsonwebtoken";
 import { pool } from "../config/db.js";
 
 
-
-
 const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -30,7 +28,7 @@ const login = async (req, res) => {
     console.log("token:", token)
 
     res.status(200).json({token, user});
-  } catch (error) {
+  } catch(error) {
     console.error("Error during login:", error);
     res.status(500).json({ message: "An error occurred during login." });
   }
