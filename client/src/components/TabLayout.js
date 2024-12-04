@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import person from "../assets/images/person.png";
 import { NavLink } from "react-router-dom";
 import "./TabLayout.css";
 
@@ -15,7 +14,7 @@ const TabLayout = ({ children }) => {
               className={`nav-link tab ${
                 activeTab === "personal-info" ? "active" : ""
               }`}
-              to="/personal-info"
+              to="../personal-info"
               onClick={() => setActiveTab("personal-info")}
             >
               Personal Information
@@ -26,7 +25,7 @@ const TabLayout = ({ children }) => {
               className={`nav-link tab ${
                 activeTab === "travel-log" ? "active" : ""
               }`}
-              to="/travel-log"
+              to="../travel-log"
               onClick={() => setActiveTab("travel-log")}
             >
               Travel Log
@@ -37,7 +36,7 @@ const TabLayout = ({ children }) => {
               className={`nav-link tab ${
                 activeTab === "booking-info" ? "active" : ""
               }`}
-              to="/booking-info"
+              to="../booking-info"
               onClick={() => setActiveTab("booking-info")}
             >
               Booking Information

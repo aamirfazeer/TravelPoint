@@ -5,13 +5,14 @@ dotenv.config();
 
 
 const pool = new Pool({
-  host: "travelpoint-db.postgres.database.azure.com",
-  port: 5432, 
-  user: "postgres",
-  password: "tp/3@UCSC",
-  database: "travelpoint", 
-  ssl: { rejectUnauthorized: false }, 
-  connectionTimeoutMillis: 10000, 
+
+  host: "travelpoint-db.postgres.database.azure.com" ,
+  port: 5432 ,
+  user: "postgres" ,
+  password: "tp/3@UCSC" ,
+  database: "travelpoint" ,
+  ssl: { rejectUnauthorized: false } // Uncomment if using SSL
+
 });
 
 
